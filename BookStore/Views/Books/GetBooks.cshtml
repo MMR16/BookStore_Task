@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Book>
+
+<table class="table text-center align-baseline">
+    <thead>
+        <tr>
+            <th>Title </th>
+            <th>Code </th>
+            <th>Author </th>
+            <th>Rented </th>
+            <th>Available </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Title   </td>
+                <td> @item.Code   </td>
+                <td>  @item.Author  </td>
+                <td>  <input class="form-check-input" disabled type="checkbox" asp-for="@item.Rented">  </td>
+                <td>  <input class="form-check-input" disabled type="checkbox" asp-for="@item.Available">  </td>
+
+            </tr>
+        }
+        <tr class="fw-bold">
+            <td colspan="3"> Rented & Available books</td>
+            <td >@Model.Count(e=>e.Rented)</td>
+            <td>@Model.Count(e=>e.Available)</td>
+        </tr>
+    </tbody>
+</table>
+
+

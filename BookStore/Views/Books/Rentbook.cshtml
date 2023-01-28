@@ -1,0 +1,26 @@
+﻿@model IEnumerable<SelectListItem>
+
+@{
+    ViewData["Title"] = "Rentbook";
+}
+
+<h2>Rent book: @ViewBag.bookName</h2>
+<br>
+<br>
+<br>
+<form asp-action="Rentbook" asp-controller="books" asp-antiforgery="true">
+    <span>choose user name</span>
+    <br>
+    <select asp-items="Model" name="BorrowerId" class="form-select">
+        <option disabled selected> select Name </option>
+    </select>
+    <input type="hidden" value="@ViewBag.Id" name="BookId" />
+    <br />
+    <br />
+    <br />
+    <input type="submit" class="btn-primary btn-primary" value="Save">
+</form>
+<br />
+<br />
+<br />
+<a asp-action="Index" asp-controller="books" class="btn btn-primary">return to available books</a>

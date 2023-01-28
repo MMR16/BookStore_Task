@@ -1,0 +1,44 @@
+﻿@using BookStore.ViewModels;
+
+@model BookViewModel
+
+
+<form asp-controller="books" asp-action="Addbook" asp-antiforgery=true method="post">
+    <div class="form-group">
+        <label asp-for="Title"> Title</label>
+        <input class="form-control" asp-for="Title">
+        <span class="text-danger" asp-validation-for="Title"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Author"> Author</label>
+        <input class="form-control" asp-for="Author">
+        <span class="text-danger" asp-validation-for="Author"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Code"> Code</label>
+        <input class="form-control" asp-for="Code">
+        <span class="text-danger" asp-validation-for="Code"></span>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" class="form-check-input" asp-for="Available">
+        <label class="form-check-label" asp-for="Available">Available</label>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Add</button>
+
+</form>
+<br>
+<br>
+<a asp-action="index" asp-controller="books">
+    <button class="btn btn-warning">back </button>
+</a>
+
+<partial name="_ValidationScriptsPartial" />
+@*
+    @section Scripts{
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }*@

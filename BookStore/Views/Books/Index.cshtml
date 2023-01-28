@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Book>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title </th>
+            <th>Code </th>
+            <th>Author </th>
+            <th>Rent </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Title   </td>
+                <td> @item.Code   </td>
+                <td>  @item.Author  </td>
+                <td>  <a  asp-action="Rentbook" asp-route-id="@item.Id" class="btn btn-primary">Rent</a> </td>
+            </tr>
+
+        }
+       
+    </tbody>
+</table>
+
+
+<a  asp-controller="Books" asp-action="Addbook" class="btn btn-primary"> Add new book</a>

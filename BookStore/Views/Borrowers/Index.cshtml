@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Borrower>
+
+
+<table class="text-center table align-baseline ">
+    <thead>
+        <tr>
+            <th scope="col"> Name</th>
+            <th scope="col"> id</th>
+            <th scope="col"> books</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td> @item.Name</td>
+                <td> @item.NationalId </td>
+                <td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"> book title   </th>
+                                <th scope="col"> author  </th>
+                                <th scope="col"> book code  </th>
+                                <th scope="col">Rented</th>
+                                <th scope="col">Return Book</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var t in @item.BookBorrowers)
+                            {
+                                <tr>
+                                    <td>  @t.Book.Title  </td>
+                                    <td>  @t.Book.Author  </td>
+                                    <td>  @t.Book.Code  </td>
+                                    <td>  <input class="form-check-input" disabled type="checkbox" asp-for="@t.Book.Rented">  </td>
+                                    <td><a asp-action="ReturnBooks" asp-controller="Borrowers" asp-route-BookId="@t.BookId" asp-route-BorrowerId="@t.BorrowerId" class="btn btn-outline-primary">Return</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
